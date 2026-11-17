@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Civic - Public Grievance System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #243047;
+        }
+
+        header {
+            background: #123b68;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            font-size: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        .hero {
+            min-height: 480px;
+            background: linear-gradient(120deg, #123b68, #087eaf);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        .hero button {
+            margin-top: 30px;
+            padding: 14px 30px;
+            background: #ffc107;
+            border: none;
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .features {
+            padding: 55px 8%;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 30px;
+            margin-bottom: 35px;
+        }
+
+        .feature-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .feature-card h3 {
+            color: #087eaf;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #123b68;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media(max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>Smart Civic</h2>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Smart Civic Complaint System</h1>
+
+    <p>
+        A digital platform that connects citizens and government
+        departments to report civic problems, track complaints
+        and improve public services.
+    </p>
+
+    <button onclick="window.location.href='/login'">
+    Report a Problem
+</button>
+</section>
+
+<section class="features" id="features">
+    <h2>Our Services</h2>
+
+    <div class="feature-container">
+
+        <div class="feature-card">
+            <h3>Submit Complaints</h3>
+            <p>Report problems related to roads, water, sanitation and electricity.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Track Complaints</h3>
+            <p>Check the current status of your submitted complaints.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Quick Resolution</h3>
+            <p>Help government departments respond to public issues efficiently.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Public Feedback</h3>
+            <p>Share feedback and rate the quality of complaint resolution.</p>
+        </div>
+
+    </div>
+</section>
+
+<footer id="contact">
+    <p>© 2026 Smart Civic Complaint System | Public Service Platform</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Complaint - Smart Civic</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 20px;
+            color: #243047;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #243b80;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button, .back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #243b80;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .back {
+            background: #666;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Edit Complaint</h2>
+
+    <form th:action="@{/complaints/update/{id}(id=${complaint.id})}"
+          method="post">
+
+        <input type="hidden"
+               th:name="${_csrf.parameterName}"
+               th:value="${_csrf.token}">
+
+        <label>Complaint Title</label>
+        <input type="text" name="title"
+               th:value="${complaint.title}" required>
+
+        <label>Category</label>
+        <select name="category" required>
+            <option value="Road" th:selected="${complaint.category == 'Road'}">Road</option>
+            <option value="Water" th:selected="${complaint.category == 'Water'}">Water</option>
+            <option value="Sanitation" th:selected="${complaint.category == 'Sanitation'}">Sanitation</option>
+            <option value="Electricity" th:selected="${complaint.category == 'Electricity'}">Electricity</option>
+            <option value="Garbage" th:selected="${complaint.category == 'Garbage'}">Garbage</option>
+            <option value="Drainage" th:selected="${complaint.category == 'Drainage'}">Drainage</option>
+            <option value="Street Lights" th:selected="${complaint.category == 'Street Lights'}">Street Lights</option>
+            <option value="Other" th:selected="${complaint.category == 'Other'}">Other</option>
+        </select>
+
+        <label>Description</label>
+        <textarea name="description" maxlength="2000"
+                  required th:text="${complaint.description}"></textarea>
+
+        <label>Location</label>
+        <input type="text" name="location"
+               th:value="${complaint.location}" required>
+
+        <button type="submit">Save Changes</button>
+
+        <a href="/complaints/my" class="back">Cancel</a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

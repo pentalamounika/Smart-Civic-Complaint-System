@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Feedback - Smart Civic</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5f9;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #234a75;
+        }
+
+        .details {
+            background: #eef4fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            background: #234a75;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #173452;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Citizen Feedback</h2>
+
+    <div class="details">
+        <p><strong>Complaint ID:</strong>
+            <span th:text="${complaint.id}"></span>
+        </p>
+
+        <p><strong>Complaint Title:</strong>
+            <span th:text="${complaint.title}"></span>
+        </p>
+    </div>
+
+    <form th:action="@{/feedback/submit/{id}(id=${complaint.id})}"
+          method="post">
+
+        <label>Rate Our Service (1 to 5)</label>
+
+        <select name="rating" required>
+            <option value="">Select Rating</option>
+            <option value="5">5 - Excellent</option>
+            <option value="4">4 - Very Good</option>
+            <option value="3">3 - Good</option>
+            <option value="2">2 - Average</option>
+            <option value="1">1 - Poor</option>
+        </select>
+
+        <label>Your Comments</label>
+
+        <textarea name="comments"
+                  rows="5"
+                  maxlength="1000"
+                  placeholder="Share your experience..."
+                  required></textarea>
+
+        <button type="submit">Submit Feedback</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
